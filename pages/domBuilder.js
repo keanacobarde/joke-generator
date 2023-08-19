@@ -1,6 +1,5 @@
 const domBuilder = () => {
-  const domString = '<button type="button" class="btn btn-info" id="jokeBtn"> Get A Joke </button>';
-  document.querySelector('#app').innerHTML = domString;
+  document.querySelector('#app').innerHTML = '<div id = "joke-section"></div><div id="joke-btn"></div>';
 };
 
 export default domBuilder;

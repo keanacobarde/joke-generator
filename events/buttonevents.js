@@ -1,9 +1,10 @@
 import getJoke from '../api/jokeAPI';
+import showJokes from '../pages/jokes';
 
 const buttonEvents = () => {
   document.querySelector('#jokeBtn').addEventListener('click', () => {
     getJoke().then((response) => {
-      console.warn(response.setup, response.delivery);
+      showJokes(response);
     });
   });
 };

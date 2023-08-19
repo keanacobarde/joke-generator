@@ -1,6 +1,8 @@
+import renderToDom from '../utils/renderToDom';
+
 const showJokes = (response) => {
-  const setup = console.warn(response.setup);
-  return setup;
+  const setup = `<p>${response.setup}</p>`;
+  renderToDom('#joke-section', setup);
 };
 
 export default showJokes;
