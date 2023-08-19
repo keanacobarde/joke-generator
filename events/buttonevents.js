@@ -2,7 +2,9 @@ import getJoke from '../api/jokeAPI';
 
 const buttonEvents = () => {
   document.querySelector('#jokeBtn').addEventListener('click', () => {
-    getJoke().then(console.warn);
+    getJoke().then((response) => {
+      console.warn(response.setup, response.delivery);
+    });
   });
 };
 
