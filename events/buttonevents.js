@@ -1,10 +1,22 @@
 import getJoke from '../api/jokeAPI';
-import showJokes from '../pages/jokes';
+import { showDelivery, showJokes } from '../pages/jokes';
+import { getPunchilneBtn, getNewJokeBtn } from '../components/buttons';
+// import clearDom from '../utils/clearDom';
 
 const buttonEvents = () => {
-  document.querySelector('#jokeBtn').addEventListener('click', () => {
+  document.querySelector('#app').addEventListener('click', (e) => {
     getJoke().then((response) => {
-      showJokes(response);
+      if (e.target.innerText === 'Get A Joke') {
+        showJokes(response);
+        getPunchilneBtn();
+      }
+      if (e.target.innerText === 'Get A Punchline') {
+        showDelivery(response);
+        getNewJokeBtn();
+      }
+      if (e.target.innerText === 'Get A Joke') {
+        buttonEvents();
+      }
     });
   });
 };

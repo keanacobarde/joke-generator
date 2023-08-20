@@ -5,4 +5,9 @@ const showJokes = (response) => {
   renderToDom('#joke-section', setup);
 };
 
-export default showJokes;
+const showDelivery = (response) => {
+  const delivery = `<p>${response.delivery}</p>`;
+  renderToDom('#joke-section', delivery);
+};
+
+export { showJokes, showDelivery };
