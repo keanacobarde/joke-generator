@@ -1,24 +1,32 @@
 import getJoke from '../api/jokeAPI';
 import { showDelivery, showJokes } from '../pages/jokes';
-import { getPunchilneBtn, getNewJokeBtn } from '../components/buttons';
-// import clearDom from '../utils/clearDom';
+import { getJokeBtn, getPunchilneBtn, getNewJokeBtn } from '../components/buttons';
+import clearDom from '../utils/clearDom';
+import domBuilder from '../pages/domBuilder';
 
 const buttonEvents = () => {
-  document.querySelector('#app').addEventListener('click', (e) => {
-    getJoke().then((response) => {
+  getJoke().then((response) => {
+    document.querySelector('#app').addEventListener('click', (e) => {
       if (e.target.innerText === 'Get A Joke') {
         showJokes(response);
         getPunchilneBtn();
       }
-      if (e.target.innerText === 'Get A Punchline') {
+    });
+    document.querySelector('#app').addEventListener('click', (event) => {
+      if (event.target.innerText === 'Get A Punchline') {
         showDelivery(response);
-        getNewJokeBtn();
-      }
-      if (e.target.innerText === 'Get A Joke') {
-        buttonEvents();
+        getJokeBtn();
       }
     });
   });
+  document.querySelector('#reset-section').addEventListener('click', (deleteEvent) => {
+    if (deleteEvent.target.innerText === 'Reset') {
+      clearDom();
+      domBuilder();
+      getJokeBtn();
+      getNewJokeBtn();
+      buttonEvents();
+    }
+  });
 };
-
 export default buttonEvents;
